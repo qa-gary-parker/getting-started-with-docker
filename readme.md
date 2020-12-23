@@ -21,12 +21,17 @@ Docker provides a playground if you don't want to run this on your local machine
 - Navigate into the `first-container` folder
 - `docker image build -t qagaryparker/gsd:ctr --no-cache .` to build an image
 
-> Note: `qagaryparker/gsd` is the image name, `ctr` is the tag (these can both be anything)
+> Note: `qagaryparker` is the Docker Hub ID, `gsd` is the repository name, `ctr` is the image name/tag
 
 - `docker image ls` to list your docker images
 
 - `docker image push qagaryparker/gsd:ctr` to push the image to a registry
 
+> Note: you will be able to view this on your [Docker Hub Account](https://hub.docker.com/repository/docker)
+
 - `docker container run -d --name web -p 8080:8080 qagaryparker/gsd:ctr` to run the image in a container
 
 - `docker container ls` to view running containers
+
+
+
