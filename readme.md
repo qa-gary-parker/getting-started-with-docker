@@ -10,12 +10,12 @@
 - Install [Docker Desktop](https://www.docker.com/products/docker-desktop)
 - Create a [Docker Account](https://hub.docker.com/signup)
 
-## :runner: Play with Docker
+## :video_game: Play with Docker
 Docker provides a playground if you don't want to run this on your local machine:
 - Login to [Play with Docker](https://labs.play-with-docker.com/)
 - Add a new instance
 
-## :rocket: Deploying a containerized App
+## :rocket: Deploying a Containerized App
 
 - Copy the course authors [repository](https://github.com/nigelpoulton/gsd)
 - Navigate into the `first-container` folder
@@ -29,9 +29,19 @@ Docker provides a playground if you don't want to run this on your local machine
 
 > Note: you will be able to view this on your [Docker Hub Account](https://hub.docker.com/repository/docker)
 
+## :runner: Running a Containerized App
+
 - `docker container run -d --name web -p 8080:8080 qagaryparker/gsd:ctr` to run the image in a container
 
 - `docker container ls` to view running containers
 
+- `docker image rm qagaryparker/gsd:ctr` to remove the image from your local machine
 
+> Note: Local Containers using this image must be stopped and deleted before removing the image
+
+- `docker container run -d --name web -p 8000:8080 qagaryparker/gsd:ctr`
+
+> Note: As there is no local instance, this image is pulled from Docker Hub
+
+## :blue_book: Managing a Containerized App
 
