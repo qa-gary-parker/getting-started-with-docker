@@ -62,3 +62,5 @@ Docker provides a playground if you don't want to run this on your local machine
 - `ctrl + p + q` detaches from the running container and frees up the terminal
 
 - `docker container rm test -f` to force remove the container
+
+ 
