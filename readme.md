@@ -33,7 +33,7 @@ Docker provides a playground if you don't want to run this on your local machine
 
 - `docker container run -d --name web -p 8080:8080 qagaryparker/gsd:ctr` to run the image in a container
 
-- `docker container ls` to view running containers
+- `docker container ls` to list running containers
 
 - `docker image rm qagaryparker/gsd:ctr` to remove the image from your local machine
 
@@ -45,3 +45,20 @@ Docker provides a playground if you don't want to run this on your local machine
 
 ## :blue_book: Managing a Containerized App
 
+- `docker container stop web` to stop the running container
+
+- `docker container ls -a` to list all containers (even those not running)
+
+- `docker container start web` to start the container
+
+- `docker container rm web` to remove the container
+
+- `docker container run -it --name test alpine sh`
+
+>Note: `-it` is interactive terminal, `alpine` is the image, `sh` is the main app. running inside the container
+
+- `exit` exits the `sh` shell process and kills the container
+
+- `ctrl + p + q` detaches from the running container and frees up the terminal
+
+- `docker container rm test -f` to force remove the container
