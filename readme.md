@@ -41,7 +41,7 @@ Docker provides a playground if you don't want to run this on your local machine
 
 - `docker container run -d --name web -p 8000:8080 qagaryparker/gsd:ctr`
 
-> Note: As there is no local instance, this image is pulled from Docker Hub
+> Note: As there is no local instance, this image is pulled from Docker Hub - you can view the web app on `localhost:8000`
 
 ## :blue_book: Managing a Containerized App
 
@@ -62,5 +62,23 @@ Docker provides a playground if you don't want to run this on your local machine
 - `ctrl + p + q` detaches from the running container and frees up the terminal
 
 - `docker container rm test -f` to force remove the container
+
+## :books: Multi-container Apps with Docker Compose
+
+- Navigate into the `multi-container` folder
+
+- `docker-compose up -d` to build, create, start and attach to container for a service
+
+> Note: You can view the web app on `localhost:5000`
+
+- `docker-compose down` to stop and remove containers, networks, volumes and images create by `up`
+
+## Docker Swarm
+
+> 'You should maintain an odd number of managers in the swarm to support manager node failures. Having an odd number of managers ensures that during a network partition, there is a higher chance that the quorum remains available to process requests if the network is partitioned into two sets.'
+
+- For more information see the Docker [documentation](https://docs.docker.com/engine/swarm/admin_guide/#add-manager-nodes-for-fault-tolerance)
+
+
 
  
