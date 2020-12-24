@@ -63,7 +63,7 @@ Docker provides a playground if you don't want to run this on your local machine
 
 - `docker-compose down` to stop and remove containers, networks, volumes and images create by `up`
 
-## Docker Swarm
+## :honeybee: Docker Swarm
 
 > 'You should maintain an odd number of managers in the swarm to support manager node failures. Having an odd number of managers ensures that during a network partition, there is a higher chance that the quorum remains available to process requests if the network is partitioned into two sets.'
 
@@ -75,5 +75,29 @@ Docker provides a playground if you don't want to run this on your local machine
 > Follow the steps below if you are not using a template
 
 #### Manager 1
-- `docker swarm init --advertise-addr=192.168.0.20`
+- `docker swarm init --advertise-addr=192.168.0.20` to initalise the swarm
 - `docker swarm join-token manager`
+
+> This will generate a command - copy and run this on the nodes you want to be managers
+
+- `docker swarm join-token worker`
+
+> This will generate a command - copy and run this on the nodes you want to be workers
+
+- `docker node ls` to view active managers and workers
+- `docker service create --name web -p 8080:8080 --replicas 3 qagaryparker/gsd:docker` to create 3 replicas of the same image or container
+- `docker service ls` to view replicated services
+- `docker service ps web` to view each replica and where it is running
+- `docker service scale web=10` to scale the services
+- `docker container rm 5c7tjba3hhd8` to remove a specific container
+
+> After removing this container, Docker will add a new container to match the scaled value of 10
+
+- Navigate to the `swarm-stack` folder
+- `docker image build -t qagaryparker/gsd:swarm-stack .` to build the 'swarm-stack' image
+- `docker image push qagaryparker/gsd:swarm-stack` to push to a Docker Hub registry
+- `docker stack deploy -c docker-compose.yml counter` to deploy a stack from a compose file on the swarm
+- `docker stack ls` to list stacks
+- `docker stack services counter` to view stack details
+- `docker stack ps counter` to view containers in the stack
+
