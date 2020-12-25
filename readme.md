@@ -102,3 +102,13 @@ Docker provides a playground if you don't want to run this on your local machine
 - `docker stack services counter` to view stack details
 - `docker stack ps counter` to view containers in the stack
 - `docker stack rm counter` to remove stack
+
+|                                                        |                                             |
+|--------------------------------------------------------|---------------------------------------------|
+| `docker image build -t qagaryparker/gsd:swarm-stack .` | build the 'swarm-stack' image               |
+| `docker image push qagaryparker/gsd:swarm-stack`       | push to a Docker Hub registry               |
+| `docker stack deploy -c docker-compose.yml counter`    | deploy stack from compose file to the swarm |
+| `docker stack ls`                                      | list stacks                                 |
+| `docker stack services counter`                        | view stack details                          |
+| `docker stack ps counter`                              | view containers in stack                    |
+| `docker stack rm counter`                              | remove stack                                |
