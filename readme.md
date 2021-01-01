@@ -26,36 +26,55 @@ Docker provides a playground if you don't want to run this on your local machine
 ---
 ## :rocket: Deploying a Containerized Application
 
-- Copy the course authors [repository](https://github.com/nigelpoulton/gsd)
 - Navigate into the `first-container` folder
+- Build image
+- View Docker images
+- Push image to registry
 
-| Command                                                   | Description |
-|:----------------------------------------------------------|:------------|
-| `docker image build -t qagaryparker/gsd:ctr --no-cache .` | build image |
+```properties
+λ docker image build -t qagaryparker/gsd:ctr --no-cache .
+[+] Building 48.3s (11/11) FINISHED
 
-> `qagaryparker` is the Docker Hub ID, `gsd` is the repository name, `ctr` is the image name/tag
+λ docker image ls
+REPOSITORY         TAG   IMAGE ID       CREATED         SIZE
+qagaryparker/gsd   ctr   60d270177b7b   7 minutes ago   121MB
 
-| Command                                  | Description            |
-|:-----------------------------------------|:-----------------------|
-| `docker image ls`                        | list docker images     |
-| `docker image push qagaryparker/gsd:ctr` | push image to registry |
+λ docker image push qagaryparker/gsd:ctr
+The push refers to repository [docker.io/qagaryparker/gsd]
+76cb1994bb60: Pushed
+```
 
 > You will be able to view this on your [Docker Hub Account](https://hub.docker.com/repository/docker)
 
 ---
 ## :runner: Running a Containerized Application
 
-| Command                                                                | Description                     |
-|:-----------------------------------------------------------------------|:--------------------------------|
-| `docker container run -d --name web -p 8080:8080 qagaryparker/gsd:ctr` | to run image in container       |
-| `docker container ls`                                                  | list running containers         |
-| `docker image rm qagaryparker/gsd:ctr`                                 | remove image from local machine |
+- Run image in container
+- List running containers
+- Remove image from local machine
+
+```properties
+λ docker container run -d --name web -p 8080:8080 qagaryparker/gsd:ctr
+aea4bbc0dadf73b708f9b28bc73e9817af9cc489dc51d22a3d2f02520f43dc25
+
+λ docker container ls
+CONTAINER ID  IMAGE                 COMMAND        CREATED         STATUS        NAMES
+aea4bbc0dadf  qagaryparker/gsd:ctr  "node app.js"  12 seconds ago  Up 7 seconds  web
+
+λ docker container stop web
+web
+
+λ docker image rm qagaryparker/gsd:ctr
+Untagged: qagaryparker/gsd:ctr
+Deleted: sha256:60d270177b7b0da96474baf7f0e55f1d2a353690a5cbd103711076c46ea2efb7
+```
 
 > Local Containers using this image must be stopped and deleted before removing the image
 
-| Command                                                                | Description                             |
-|:-----------------------------------------------------------------------|:----------------------------------------|
-| `docker container run -d --name web -p 8000:8080 qagaryparker/gsd:ctr` | to run image in container (second time) |
+```properties
+λ docker container run -d --name web -p 8000:8080 qagaryparker/gsd:ctr
+a5c5056853ee9a50f983642fa9355706bfe9cad6bbabfb71954fc7a924e8e67a
+```
 
 > As there is no local instance, this image is pulled from Docker Hub - you can view the web app on `localhost:8000`
 
