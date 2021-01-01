@@ -1,8 +1,11 @@
 # Getting Started with Docker
 
-![](images/image1.jpg)
+![](images/banner.jpg)
 
-Documentation based on Pluralsight course [Getting Started with Docker](https://app.pluralsight.com/library/courses/getting-started-docker)
+Documentation based on Pluralsight course [Getting Started with Docker](https://app.pluralsight.com/library/courses/kubernetes-getting-started/)
+
+> Clone the files from the authors [repository](https://github.com/nigelpoulton/gsd) to
+follow steps below
 
 ---
 ## :gear: Technology
