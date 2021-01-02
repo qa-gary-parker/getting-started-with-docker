@@ -1,6 +1,6 @@
 # Getting Started with Docker
 
-![](images/banner.jpg)
+![banner](images/banner.jpg)
 
 Documentation based on Pluralsight course [Getting Started with Docker](https://app.pluralsight.com/library/courses/kubernetes-getting-started/)
 
@@ -8,22 +8,29 @@ Documentation based on Pluralsight course [Getting Started with Docker](https://
 follow steps below
 
 ---
+
 ## :gear: Technology
+
 - Docker
 
 ---
+
 ## :notebook: Setup Docker
 
 - Install [Docker Desktop](https://www.docker.com/products/docker-desktop)
 - Create a [Docker Account](https://hub.docker.com/signup)
 
 ---
+
 ## :video_game: Play with Docker
+
 Docker provides a playground if you don't want to run this on your local machine:
+
 - Login to [Play with Docker](https://labs.play-with-docker.com/)
 - Add a new instance
 
 ---
+
 ## :rocket: Deploying a Containerized Application
 
 - Navigate into the `first-container` folder
@@ -47,6 +54,7 @@ The push refers to repository [docker.io/qagaryparker/gsd]
 > You will be able to view this on your [Docker Hub Account](https://hub.docker.com/repository/docker)
 
 ---
+
 ## :runner: Running a Containerized Application
 
 - Run image in container
@@ -79,15 +87,32 @@ a5c5056853ee9a50f983642fa9355706bfe9cad6bbabfb71954fc7a924e8e67a
 > As there is no local instance, this image is pulled from Docker Hub - you can view the web app on `localhost:8000`
 
 ---
+
 ## :blue_book: Managing a Containerized Application
 
-| Command                                          | Description                                  |
-|:-------------------------------------------------|:---------------------------------------------|
-| `docker container stop web`                      | stop running container                       |
-| `docker container ls -a`                         | list all containers (even those not running) |
-| `docker container start web`                     | start container                              |
-| `docker container rm web`                        | remove container                             |
-| `docker container run -it --name test alpine sh` | run container                                |
+- List Containers
+- Stop container
+- Remove container
+- Run alpine container image
+
+```properties
+λ docker container ls -a
+CONTAINER ID   IMAGE                  COMMAND        CREATED             STATUS         NAMES
+a5c5056853ee   qagaryparker/gsd:ctr   "node app.js"  About a minute ago  Up 56 seconds  web
+
+λ docker container stop web
+web
+
+λ docker container rm web
+web
+
+λ docker container run -it --name test alpine sh                                   
+Unable to find image 'alpine:latest' locally                                       
+latest: Pulling from library/alpine                                                
+801bfaa63ef2: Pull complete                                                        
+Digest: sha256:3c7497bf0c7af93428242d6176e8f7905f2201d8fc5861f45be7a346b5f23436    
+Status: Downloaded newer image for alpine:latest                                   
+```
 
 > `-it` is interactive terminal, `alpine` is the image, `sh` is the main application running inside the container
 
@@ -96,31 +121,47 @@ a5c5056853ee9a50f983642fa9355706bfe9cad6bbabfb71954fc7a924e8e67a
 - `docker container rm test -f` to force remove the container
 
 ---
+
 ## :books: Multi-container Apps with Docker Compose
 
 Navigate into the `multi-container` folder
 
-| Command                | Description                                                |
-|:-----------------------|:-----------------------------------------------------------|
-| `docker-compose up -d` | build, create, start and attach to container for a service |
+- Build and stop multi-container app from docker-compose file
+
+```properties
+λ docker-compose up -d
+Creating network "multi-container_counter-net" with the default driver
+Creating volume "multi-container_counter-vol" with default driver
+...
+Creating multi-container_web-fe_1 ... done
+Creating multi-container_redis_1  ... done
+```
 
 > You can view the web app on `localhost:5000`
 
-| Command               | Description                                                             |
-|:----------------------|:------------------------------------------------------------------------|
-| `docker-compose down` | stop and remove containers, networks, volumes and images create by `up` |
+```properties
+λ docker-compose down
+Stopping multi-container_redis_1  ... done
+Stopping multi-container_web-fe_1 ... done
+Removing multi-container_redis_1  ... done
+Removing multi-container_web-fe_1 ... done
+Removing network multi-container_counter-net
+```
 
 ---
+
 ## :honeybee: Docker Swarm
 
 > 'You should maintain an odd number of managers in the swarm to support manager node failures. Having an odd number of managers ensures that during a network partition, there is a higher chance that the quorum remains available to process requests if the network is partitioned into two sets.'
 
 - For more information see the Docker [documentation](https://docs.docker.com/engine/swarm/admin_guide/#add-manager-nodes-for-fault-tolerance)
+
 ---
+
 - Go to [Play with Docker](https://labs.play-with-docker.com/)
 - Select the template for 3 managers and 2 workers
 
-> Follow the steps below if you are not using a template. The first 2 commands are run on 'Manager1'
+> Follow the steps below if you are __not__ using a template. The first 2 commands are run on 'Manager1'
 
 | Command                                           | Description                 |
 |:--------------------------------------------------|:----------------------------|
@@ -148,7 +189,7 @@ Navigate into the `multi-container` folder
 
 ---
 
-#### Building Swarm from docker-compose
+### Building Swarm from docker-compose
 
 - Navigate to the `swarm-stack` folder
 
